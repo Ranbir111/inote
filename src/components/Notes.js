@@ -10,7 +10,8 @@ const Notes = (props) => {
     const { showAlert } = props;
     const context = useContext(noteContext);
     const { notes, getAllNotes, editNote, getNoteById, loading } = context;
-    const ref = useRef(null);
+    const ref1 = useRef(null);
+    const ref2 = useRef(null);
     const [note, setNote] = useState({ title: "", description: "", tag: "" });
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -21,17 +22,24 @@ const Notes = (props) => {
     }, [])
 
     const updateNote = (currentNote) => {
-        ref.current.click();
+        ref1.current.click();
         setNote(currentNote);
     }
 
     const handleClose = () => {
-        // console.log(getNoteById("6680e6cc995f97138d146d69"));
+        if(note === getNoteById(note._id)){
+            ref1.current.click();
+        }else{
+            let confirmation = window.confirm("Your note will not be saved!\nAre you sure, You want to close?",);
+            if(confirmation === true){
+                ref1.current.click();
+            }
+        }
     }
 
     const handleClick = () => {
         editNote(note._id, note.title, note.description, note.tag);
-        ref.current.click();
+        ref1.current.click();
         showAlert("Note Updated Successfully", "success");
     }
 
@@ -42,7 +50,7 @@ const Notes = (props) => {
     return (
         <>
             <AddNote showAlert={showAlert} />
-            <button type="button" className="btn d-none btn-primary" ref={ref} data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" className="btn d-none btn-primary" ref={ref1} data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -68,7 +76,7 @@ const Notes = (props) => {
                             {/* <button onClick={handleClick} type="submit" className="btn btn-primary">Add Note</button> */}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleClose}>Close</button>
+                            <button type="button" className="btn btn-secondary" ref={ref2} onClick={handleClose}>Close</button>
                             <button disabled={note.title.length < 3 || note.description.length < 5} type="button" onClick={handleClick} className="btn btn-primary">Update Note</button>
                         </div>
                     </div>

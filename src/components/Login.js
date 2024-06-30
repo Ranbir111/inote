@@ -55,8 +55,8 @@ function Login(props) {
                 <input type="password" onChange={handleChange} value={credentials.password} className="form-control" id="password" name="password" required />
             </div>
             <button type="submit" disabled={loading} className="btn btn-primary">
-                {loading && <div class="spinner-grow text-dark" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                {loading && <div className="spinner-grow text-dark" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>}
                 {!loading && "Submit"}
             </button>

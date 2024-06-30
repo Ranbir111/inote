@@ -17,7 +17,7 @@ const NoteItem = (props) => {
                     <i className="fa-solid mb-3 fa-file-pen text-warning" onClick={() => { updateNote(note) }} />
                     <i className="fa-solid mt-3 fa-trash text-danger" onClick={() => {
                         deleteNote(note._id);
-                        showAlert("Note Deleted Successfully", "danger");
+                        showAlert("Note Deleted Successfully", "success");
                     }} />
                 </div>
             </div>

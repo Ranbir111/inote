@@ -61,8 +61,8 @@ const NoteState = (props) => {
         //Api call to delete a note
         let json = null;
         let url = host + "/api/notes/deletenote/" + id;
-        let txt = prompt("Write 'delete' to delete the note!");
-        if (txt == "delete" || txt == "Delete") {
+        let confirm = window.confirm("Your note will be permanently deleted!");
+        if (confirm === true) {
             fetch(url, {
                 method: 'DELETE',
                 headers: {
@@ -114,11 +114,9 @@ const NoteState = (props) => {
 
     //Get note by Id
     const getNoteById = (id) => {
-        // console.log(notes.find(note => note._id === id));
         var result = notes.find(note => {
             return note._id === id
         })
-        // console.log(result);
         return result;
     }
 
