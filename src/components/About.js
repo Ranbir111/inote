@@ -37,7 +37,7 @@ const About = () => {
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-            The developer of this site name is <a href='https://www.instagram.com/ranbir_k_g/'>Ranbir Gupta</a>. He is an IT student. He has built this website at the age of 16. He is a self learner student.
+            The developer of this site name is <a href='https://www.instagram.com/run_veer_64/'>Ranbir Kumar Gupta</a>. He is an IT student. He has built this website at the age of 16. He is a self learner student.
             </div>
           </div>
         </div>
